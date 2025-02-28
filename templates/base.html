@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="{% block html_lang %}{{ DEFAULT_LANG }}{% endblock html_lang %}">
+<head>
+  {% block head %}
+    <meta charset="UTF-8">
+    <meta name="generator" content="Pelican" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ SITENAME|striptags }}{% endblock title %}</title>
+    {% if SITESUBTITLE %}
+      <meta name="description" content="{{ SITESUBTITLE }}" />
+    {% endif %}
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap/bootstrap.min.css" >
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/meublog.css">
+    <!-- Code highlight color scheme -->
+    {% if COLOR_SCHEME_CSS %}
+      <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/code_blocks/{{ COLOR_SCHEME_CSS }}" rel="stylesheet">
+    {% else %}
+      <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/code_blocks/darkly.css" rel="stylesheet">
+    {% endif %}
+  {% endblock head %}
+  <style>
+    .bg-blogtop {
+      background-color: rgba(255, 195, 113, 1);
+    }
+    .bg-blog {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(255, 195, 113, 1));
+      -webkit-background: linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(255, 195, 113, 1));
+      -moz-background: linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(255, 195, 113, 1));
+    }
+  </style>
+</head>
+<body>
+  {% block body %}
+    <nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-dark">
+      <div class="container-fluid ">
+
+        <a href="{{ SITEURL }}/" class="navbar-brand"> {{ SITENAME }} </a>
+        {% if DISPLAY_PAGES_ON_MENU %}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            {% for p in pages %}
+            <li class="nav-item"> <a href="{{ SITEURL }}/{{ p.url }}" class="nav-link">{{ p.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+    </nav>
+    {% block header %}
+      {% include 'include/header-orange.html' %}
+    {% endblock header %}
+    <main class="container">
+    <div class="container mt-5">
+      {% block content %}
+      {% endblock content %}
+    </div>
+    {% block footer %}
+      {% include 'include/footer.html' %}
+    {% endblock footer %}
+  </main>
+    {% endblock body %}
+  </body>
+<script src="{{ SITEURL }}/theme/js/bootstrap/bootstrap.min.js"></script>
+</html>
