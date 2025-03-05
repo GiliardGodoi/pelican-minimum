@@ -9,37 +9,41 @@
     {% if SITESUBTITLE %}
       <meta name="description" content="{{ SITESUBTITLE }}" />
     {% endif %}
+    {% if RFG_FAVICONS %}
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+      <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+      <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+      <!-- <link rel="manifest" href="/manifest.json"> -->
+      <meta name="theme-color" content="#333333">
+    {% endif %}
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/fontawesome.min.css">
     <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap/bootstrap.min.css" >
-    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/meublog.css">
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/theme.css">
     <!-- Code highlight color scheme -->
     {% if COLOR_SCHEME_CSS %}
-      <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/code_blocks/{{ COLOR_SCHEME_CSS }}" rel="stylesheet">
+      <link href="{{ SITEURL }}/theme/css/code_blocks/{{ COLOR_SCHEME_CSS }}" rel="stylesheet">
     {% else %}
-      <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/code_blocks/darkly.css" rel="stylesheet">
+      <link href="{{ SITEURL }}/theme/css/code_blocks/darkly.css" rel="stylesheet">
     {% endif %}
   {% endblock head %}
-  <style>
-    .bg-blogtop {
-      background-color: rgba(255, 195, 113, 1);
-    }
-    .bg-blog {
-      background: linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(255, 195, 113, 1));
-      -webkit-background: linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(255, 195, 113, 1));
-      -moz-background: linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(255, 195, 113, 1));
-    }
-  </style>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
   {% block body %}
     <nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-dark">
       <div class="container-fluid ">
 
-        <a href="{{ SITEURL }}/" class="navbar-brand"> {{ SITENAME }} </a>
+        <a href="{{ SITEURL }}/" class="navbar-brand">
+          {% if SITELOGO %}
+            <img src="{{ SITELOGO }}" alt="{{ SITENAME }}" style="width: 30px;">
+          {% else %}
+            {{ SITENAME }}
+          {% endif %}
+        </a>
         {% if DISPLAY_PAGES_ON_MENU %}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+        <div class="collapse navbar-collapse justify-content-end pe-3" id="collapsibleNavbar">
           <ul class="navbar-nav">
             {% for p in pages %}
             <li class="nav-item"> <a href="{{ SITEURL }}/{{ p.url }}" class="nav-link">{{ p.title }}</a></li>
@@ -52,15 +56,13 @@
     {% block header %}
       {% include 'include/header-orange.html' %}
     {% endblock header %}
-    <main class="container">
-    <div class="container mt-5">
+    <main class="container flex-grow-1">
       {% block content %}
       {% endblock content %}
-    </div>
-    {% block footer %}
-      {% include 'include/footer.html' %}
-    {% endblock footer %}
-  </main>
+    </main>
+  {% block footer %}
+    {% include 'include/footer.html' %}
+  {% endblock footer %}
     {% endblock body %}
   </body>
 <script src="{{ SITEURL }}/theme/js/bootstrap/bootstrap.min.js"></script>
