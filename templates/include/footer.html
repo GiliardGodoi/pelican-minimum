@@ -5,7 +5,7 @@
 } -%}
 {%- if icon in fa_special_icons -%}
 {{ fa_special_icons[icon] }}
-{%- elif icon.split()|select("in", ["fab", "fas", "far", "fal", "fad"])|list -%}
+{%- elif icon.split()|select("in", ["fa", "fab", "fas", "far", "fal", "fad"])|list -%}
 {{ icon }}
 {%- else -%}
 fab fa-{{icon}}
@@ -22,9 +22,11 @@ fab fa-{{icon}}
       </div>
 
       <ul class="nav col-md-4 justify-content-end list-unstyled d-flex fs-4">
-        {% for icon, link in ICONS %}
+        {% for icon, link in SOCIAL %}
           <li class="ms-3">
-            <a class="{{ fa(icon) }} text-decoration-none link-secondary" href="{{ link }}" target="_blank" width="24" height="24"></a>
+            <a class="text-decoration-none link-secondary" href="{{ link }}" target="_blank" width="24" height="24">
+              <span class="{{ fa(icon) }} "></span>
+            </a>
           </li>
         {% endfor %}
         <!-- <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
