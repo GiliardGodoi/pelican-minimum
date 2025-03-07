@@ -103,13 +103,15 @@ pre {
 #btnTopo {
   position: fixed; /* Mantém fixo na tela */
   bottom: 20px;    /* Distância do rodapé */
-  right: 20px;     /* Distância da lateral */
+  /* right: 20px;     Distância da lateral */
+  left: 48%;             /* Coloca o botão no meio da tela */
+  transform: translateX(-50%); /* Ajusta para que o centro do botão fique no meio */
   background-color: #FF6F3C; /* Cor do botão */
   color: white;
   border: none;
   padding: 10px 15px;
   font-size: 16px;
-  border-radius: 20px;
+  border-radius: 8px;
   cursor: pointer;
   opacity: 0;  /* Começa invisível */
   transform: translateY(10px);  /* Move um pouco para baixo */
@@ -122,7 +124,7 @@ pre {
 }
 
 #btnTopo.show {
-  opacity: 0.5; /* Torna visível */
+  opacity: 0.3; /* Torna visível */
   transform: translateY(0); /* Volta para a posição normal */
 }
 

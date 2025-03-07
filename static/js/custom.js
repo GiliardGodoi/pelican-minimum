@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Mostra o botão quando o usuário rolar 300px para baixo
     window.addEventListener("scroll", function () {
-        if (window.scrollY > 300) {
+        if (window.scrollY > 450) {
             btnTopo.classList.add("show"); // Mostra suavemente
         } else {
             btnTopo.classList.remove("show"); // Esconde suavemente
