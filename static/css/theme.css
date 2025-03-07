@@ -61,13 +61,20 @@ a:hover {
 .toctitle {
   font-size: 1.2em;
   font-weight: bold;
+  color: #333333;
   margin-top: 1em;
   margin-bottom: 0.5em;
 }
 
 .toc ul {
   list-style: none;
-  padding-left: 1em;
+  padding-left: 0;
+}
+
+.toc ul li {
+  position: relative;
+  padding-left: 6em;
+  text-indent: -6em;
 }
 
 
@@ -102,7 +109,7 @@ pre {
 
 #btnTopo {
   position: fixed; /* Mantém fixo na tela */
-  bottom: 20px;    /* Distância do rodapé */
+  top: 10%;    /* Distância do topo */
   /* right: 20px;     Distância da lateral */
   left: 48%;             /* Coloca o botão no meio da tela */
   transform: translateX(-50%); /* Ajusta para que o centro do botão fique no meio */
@@ -114,7 +121,7 @@ pre {
   border-radius: 8px;
   cursor: pointer;
   opacity: 0;  /* Começa invisível */
-  transform: translateY(10px);  /* Move um pouco para baixo */
+  transform: translateY(-10px);  /* Move um pouco para cima */
   transition: opacity 0.4s ease, transform 0.4s ease; /* Transição suave */
 }
 
@@ -124,7 +131,7 @@ pre {
 }
 
 #btnTopo.show {
-  opacity: 0.3; /* Torna visível */
+  opacity: 0.8; /* Torna visível */
   transform: translateY(0); /* Volta para a posição normal */
 }
 
