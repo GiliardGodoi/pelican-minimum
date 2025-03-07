@@ -99,3 +99,34 @@ pre {
   opacity: 1;
   background-color: #ff8800;
 }
+
+#btnTopo {
+  position: fixed; /* Mantém fixo na tela */
+  bottom: 20px;    /* Distância do rodapé */
+  right: 20px;     /* Distância da lateral */
+  background-color: #FF6F3C; /* Cor do botão */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  opacity: 0;  /* Começa invisível */
+  transform: translateY(10px);  /* Move um pouco para baixo */
+  transition: opacity 0.4s ease, transform 0.4s ease; /* Transição suave */
+}
+
+#btnTopo:hover {
+  opacity: 1;
+  transform: scale(1.1); /* Efeito ao passar o mouse */
+}
+
+#btnTopo.show {
+  opacity: 0.5; /* Torna visível */
+  transform: translateY(0); /* Volta para a posição normal */
+}
+
+#btnTopo.show:hover {
+  opacity: 1;
+  transform: scale(1.1); /* Efeito ao passar o mouse */
+}

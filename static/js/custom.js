@@ -1,23 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll("pre").forEach(function (block) {
-        // Criar botão de copiar
-        var button = document.createElement("button");
-        button.innerHTML = '<i class="far fa-clipboard"></i>';
-        button.classList.add("btn", "btn-outline-secondary", "btn-sm", "btn-copy");
+    var btnTopo = document.getElementById("btnTopo");
 
-        // Tornar o <pre> um container para posicionamento correto
-        block.style.position = "relative";
+    // Mostra o botão quando o usuário rolar 300px para baixo
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 300) {
+            btnTopo.classList.add("show"); // Mostra suavemente
+        } else {
+            btnTopo.classList.remove("show"); // Esconde suavemente
+        }
+    });
 
-        // Inserir o botão dentro do bloco <pre>
-        block.appendChild(button);
-
-        // Evento de cópia
-        button.addEventListener("click", function () {
-            var code = block.innerText;
-            navigator.clipboard.writeText(code).then(function () {
-                button.innerText = "Copiado!";
-                setTimeout(() => (button.innerHTML = '<i class="far fa-clipboard"></i>'), 2000);
-            });
-        });
+    // Faz a página rolar suavemente para o topo ao clicar
+    btnTopo.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
     });
 });
