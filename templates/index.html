@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="px-5 mx-md-5">
+    <div class="">
     {% for article in articles_page.object_list %}
         <article class="{{ 'border-bottom' if not loop.last else '' }} border-dark-subtle mt-3">
             <header>
