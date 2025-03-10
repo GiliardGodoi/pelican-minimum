@@ -3,7 +3,8 @@
 {% block title %}{{ SITENAME|striptags }} - {{ period | reverse | join(' ') }} archives{% endblock %}
 
 {% block content %}
-    <h2>Archives for {{ period | reverse | join(' ') }}</h2>
+    <!-- <h2>Archives for {{ period | reverse | join(' ') }}</h2> -->
+    <h2>Artigos no período {{ period | reverse | join(' ') }}</h2>
 
     <dl>
         {% for article in dates %}

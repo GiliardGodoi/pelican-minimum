@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <div class="px-5 mx-md-5">
     {% for article in articles_page.object_list %}
-        <article class="border-bottom border-dark-subtle mt-3">
+        <article class="{{ 'border-bottom' if not loop.last else '' }} border-dark-subtle mt-3">
             <header>
                 <h2>
                     <a class="link-dark text-decoration-none" href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
@@ -21,7 +22,7 @@
             </footer>
         </article>
     {% endfor %}
-
+    </div>
     {% if articles_page.has_other_pages() %}
         {% include 'include/pagination.html' %}
     {% endif %}
