@@ -1,0 +1,75 @@
+{%- macro fa(icon) -%}
+{%- set fa_special_icons = {
+"feed": "fas fa-rss",
+"rss": "fas fa-rss",
+} -%}
+{%- if icon in fa_special_icons -%}
+{{ fa_special_icons[icon] }}
+{%- elif icon.split()|select("in", ["fa", "fab", "fas", "far", "fal", "fad"])|list -%}
+{{ icon }}
+{%- else -%}
+fab fa-{{icon}}
+{%- endif -%}
+{%- endmacro -%}
+<div class="container-fluid site-footer">
+  <div class="container px-5">
+    <footer class="py-3 my-4 border-top">
+      <div class="row justify-content-between py-5">
+        <div class="col-10 col-lg-8 mb-3">
+            <div class="d-flex align-items-center my-3">
+                <a href="/" class="me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                    <img src="{{ SITELOGO }}" alt="Avatar Logo" style="width:40px;">
+                  </a>
+                    <span class="ms-2 text-body-secondary">Giliard Godoi | {{ COPYRIGHT_YEAR }} </span>
+            </div>
+            <p class="text-body-secondary">Desenvolvido com <a class="link-secondary text-decoration-none" href="https://getpelican.com/" target="_blank">Pelican</a> e pensado para compartilhar conhecimento.</p>
+            <ul class="nav justify-content-start list-unstyled mb-3">
+                {% for icon, link in SOCIAL %}
+                <li class="{{ 'ms-0' if loop.first else 'ms-3' }}">
+                  <a class="text-decoration-none link-secondary" href="{{ link }}" target="_blank" width="24"
+                    height="24">
+                    <span class="{{ fa(icon) }} "></span>
+                  </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- <div class="col-6 col-lg-2 mb-3"></div> -->
+        <div class="col-6 col-lg-1 mb-3">
+          <h5>Sobre</h5>
+          <ul class="nav flex-column pb-3 mb-3">
+            {% for p in pages[:4] %}
+              <li class="nav-item"><a href="{{ SITEURL }}/{{ p.url }}" class="nav-link link-secondary text-decoration-none">{{ p.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-6 col-lg-1 mb-3">
+          <h5>Arquivos</h5>
+          <ul class="nav flex-column pb-3 mb-3">
+            <li class="nav-item"><a href="{{ SITEURL }}/{{ AUTHORS_URL or AUTHORS_SAVE_AS or 'authors.html' }}" class="nav-link link-secondary text-decoration-none">Autores</a></li>
+            <li class="nav-item"><a href="{{ SITEURL }}/{{ ARCHIVES_URL or ARCHIVES_SAVE_AS or 'archives.html' }}" class="nav-link link-secondary text-decoration-none">Arquivos</a></li>
+            <li class="nav-item"><a href="{{ SITEURL }}/{{ CATEGORIES_URL or CATEGORIES_SAVE_AS or 'categories.html' }}" class="nav-link link-secondary text-decoration-none">Categorias</a></li>
+            <li class="nav-item"><a href="{{ SITEURL }}/{{ TAGS_URL or TAGS_SAVE_AS or 'tags.html' }}" class="nav-link link-secondary text-decoration-none">Tags</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- <div class="d-flex flex-wrap justify-content-between align-items-center px-3">
+        <div class="col d-flex align-items-center text-body-secondary">
+          <span>Powered by Pelican </span>
+        </div>
+        <div class="col d-flex align-items-center">
+            <ul class="nav justify-content-start list-unstyled ms-auto d-flex">
+                {% for icon, link in SOCIAL %}
+                <li class="ms-3">
+                  <a class="text-decoration-none link-secondary" href="{{ link }}" target="_blank" width="24"
+                    height="24">
+                    <span class="{{ fa(icon) }} "></span>
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+        </div>
+      </div> -->
+    </footer>
+  </div>
+</div>
