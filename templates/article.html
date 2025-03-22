@@ -30,37 +30,42 @@
       <h1>{{ article.title }}</h1>
       <!-- {% import 'translations.html' as translations with context %}
       {{ translations.translations_for(article) }} -->
-      <span class="lead">{{ article.summary }}</span>
+
       <div class="small">  <!-- bg-body-light p-3 rounded -->
-        <span class="fst-italic">
-          {% if article.authors %}
-          Por
-          {% for author in article.authors %}
-          <a class="link-secondary link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ SITEURL }}/{{ author.url }}">
-            {{ author }}
-          </a>
-          {% endfor %}
-          {% endif %}
-          Publicado em <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}.</time>
-        </span> <br>
-        <span class="fst-italic">
-          {% if article.category %}
-          Categoria:
-          <a class="link-secondary link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ SITEURL }}/{{ article.category.url }}">
-            {{ article.category }}
-          </a>
-          {% endif %}
-          {% if article.tags %} Tags:
-          {% for tag in article.tags %}
-          <a class="link-secondary link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ SITEURL }}/{{ tag.url }}">
-            #{{ tag }}
-          </a>
-          {% endfor %}
-          {% endif %}
-        </span>
+        <section class="ps-2">
+          <span class="lead"> {{ article.summary }} </span>
+          <p class="small fst-italic">
+              <i class="far fa-user-circle"></i>
+              {% if article.authors %}
+                  Publicado por
+              {% for author in article.authors %}
+                  <a class="link-secondary link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ SITEURL }}/{{ author.url }}">
+                  {{ author }}
+                  </a>
+              {% endfor %}
+                  em </i> <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}.</time>
+              {% else %}
+              </i> Publicado em <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}.</time>
+              {% endif %}
+              {% if article.category %}
+              <i class="far fa-folder-open"></i> Categoria:
+              <a class="link-secondary link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ SITEURL }}/{{ article.category.url }}">
+                  {{ article.category }}.
+              </a>
+              {% endif %}
+              {% if article.tags %}
+              Tags:
+              {% for tag in article.tags %}
+                  <a class="link-secondary link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ SITEURL }}/{{ tag.url }}">
+                  {{ tag }}{% if not loop.last %}, {% endif %}
+                  </a>
+              {% endfor %}
+              {% endif %}
+          </p>
+      </section>
       </div>
     </header>
-    <section class="mt-5">
+    <section class="mt-5 ps-2 pe-5">
       {{ article.content }}
     </section>
   </article>

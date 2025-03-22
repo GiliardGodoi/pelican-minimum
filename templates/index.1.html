@@ -3,16 +3,18 @@
 {% block content %}
     <div class="">
     {% for article in articles_page.object_list %}
-        <article class="{{ 'border-bottom' if not loop.last else '' }} {{ 'mt-3' if not loop.first else '' }} border-dark-subtle py-3">
+        <article class="{{ 'border-bottom' if not loop.last else '' }} border-dark-subtle mt-3 py-3">
             <header>
                 <h2>
                     <a class="link-dark text-decoration-none" href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
                 </h2>
             </header>
-            <section class="ps-2">
-                <span class="lead"> {{ article.summary }} </span>
-                <p class="small fst-italic">
-                    <i class="far fa-user-circle"></i>
+            <section class="lead">
+                {{ article.summary }}
+            </section>
+            <section class="fst-italic">
+                <p>
+                    <i class="far fa-user"></i>
                     {% if article.authors %}
                         Publicado por
                     {% for author in article.authors %}
@@ -20,18 +22,19 @@
                         {{ author }}
                         </a>
                     {% endfor %}
-                        em </i> <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}.</time>
+                        em <time datetime="{{ DATE_FORMAT | article.date.isoformat() }}">{{ article.locale_date }}.</time>
                     {% else %}
-                    </i> Publicado em <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}.</time>
+                        Publicado em <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}.</time>
                     {% endif %}
+                </p>
+                <p>
                     {% if article.category %}
                     <i class="far fa-folder-open"></i> Categoria:
                     <a class="link-secondary link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ SITEURL }}/{{ article.category.url }}">
-                        {{ article.category }}.
+                        {{ article.category }}
                     </a>
                     {% endif %}
-                    {% if article.tags %}
-                    Tags:
+                    {% if article.tags %} Tags:
                     {% for tag in article.tags %}
                         <a class="link-secondary link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ SITEURL }}/{{ tag.url }}">
                         {{ tag }}{% if not loop.last %}, {% endif %}
