@@ -6,24 +6,31 @@
 
 /* Fundo do site */
 body {
-  background-color: #FFFFFF;
+  background-color: #F8F5EC;
   color: #333333;
 }
 
-.bg-top-orange {
-  background-color: rgba(255, 195, 113, 1);
+.cover-background {
+  background: url(./../../images/cover-image.png) no-repeat center center fixed;
 }
 
-/* .bg-orange {
-  background: linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(255, 195, 113, 1));
-  -webkit-background: linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(255, 195, 113, 1));
-  -moz-background: linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(255, 195, 113, 1));
-} */
+.full-cover {
+  height: 100vh; /* Altura total da tela */
+}
 
-.bg-orange {
-  background: linear-gradient(0deg, #FFFFFF, #FFE1B8);
-  -webkit-background: linear-gradient(0deg, #FFFFFF, #FFE1B8);
-  -moz-background: linear-gradient(0deg, #FFFFFF, #FFE1B8);
+.normal-cover{
+  height: 40vh; /* Altura normal */
+}
+
+.overlay{
+  background-color: rgb(0, 0, 0, 0.70);
+  color: white;
+  height: inherit;
+  display: flex;
+  justify-content: center;  /* centraliza horizontalmente */
+  align-items: center;      /* centraliza verticalmente */
+  text-align: center;       /* alinha texto no centro */
+  position: relative;
 }
 
 /* Links */
@@ -40,7 +47,7 @@ a:hover {
 }
 
 .site-footer {
-  background: linear-gradient(180deg, #FFFFFF, #FFE1B8);
+  background: linear-gradient(180deg, #F8F5EC, #FFE1B8);
   color: #333333;
 }
 
@@ -111,7 +118,7 @@ pre {
   position: fixed; /* Mantém fixo na tela */
   top: 10%;    /* Distância do topo */
   /* right: 20px;     Distância da lateral */
-  left: 48%;             /* Coloca o botão no meio da tela */
+  left: 45%;             /* Coloca o botão no meio da tela */
   transform: translateX(-50%); /* Ajusta para que o centro do botão fique no meio */
   background-color: #FF6F3C; /* Cor do botão */
   color: white;

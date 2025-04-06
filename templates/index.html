@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 
+{% block header %}
+    {%if articles_page.number == 1 %}
+        {% include 'include/header-main.html' %}
+    {% else %}
+        {% include 'include/header.html' %}
+    {% endif %}
+{% endblock header %}
+
 {% block content %}
     <div class="">
+    <h2 class="text-center">...</h2>
     {% for article in articles_page.object_list %}
         <article class="{{ 'border-bottom' if not loop.last else '' }} {{ 'mt-3' if not loop.first else '' }} border-dark-subtle py-3">
             <header>
