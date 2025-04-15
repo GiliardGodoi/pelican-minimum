@@ -12,6 +12,8 @@ body {
 
 .cover-background {
   background: url(./../../images/cover-image.png) no-repeat center center fixed;
+  background-size: cover; /* Cobre toda a área */
+  width: 100%;
 }
 
 .full-cover {
